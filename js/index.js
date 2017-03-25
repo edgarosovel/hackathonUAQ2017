@@ -1,4 +1,6 @@
 function load(){
+		body = document.getElementsByTagName('body')[0]
+		bady.style.backgroundImage = "url(../img/bc2.jpg)"
 		var url = "http://177.231.44.78/hackathonUAQ2017/Usuario/";
 	   
 		logIn = new XMLHttpRequest();
@@ -9,7 +11,7 @@ function load(){
 		logIn.onreadystatechange = function (){
 			if (logIn.readyState == 4) {
 				if (Number(logIn.responseText) == 1){
-					cargar("primerUso.html")
+					cargar("resultadoCuestionario.html")
 				}else{
 					cargar("login.html")
 				}

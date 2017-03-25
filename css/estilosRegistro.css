@@ -8,6 +8,7 @@
 }
 
 body{
+    position: relative;
     height: 100%;
     width: 100%;
     background-image: url('../img/bc2.jpg');
@@ -29,7 +30,7 @@ body{
 .input{
     width: 75%;
     height: 20%;
-    margin-top: 25px;
+    margin-top: 40px;
     margin-left: 12.5%;
     border: none;
     border-bottom: 1px solid #f7f8f9;
@@ -50,7 +51,7 @@ body{
 .inner-addon .fa {
   position: absolute;
   margin-left: 14%;
-  margin-top: 35px;
+  margin-top: 50px;
   pointer-events: none;
 }
 

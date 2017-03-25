@@ -14,7 +14,7 @@
     	}
 
 		public function iniciar_sesion($correo, $pass)
-		{	
+		{
 			$registro = $this->db->select('*', 'Usuario', "correo='".$correo."'");
 			if(is_array($registro))
 			{
@@ -55,5 +55,26 @@
 	    		}
     		}
     	}
+
+    	public function get_dato($id_usuario, $dato)
+		{
+			$registro = $this->db->select('*', 'Usuario', "id_usuario='".$id_usuario."'");
+			if($registro != Null)
+			{
+				$datos_de_usuario = array(
+					'correo' => $registro['correo'],
+					'nombre' => $registro['nombre'],
+					'colonia' => $registro['id_colonia'],
+					'integrantes' => $registro['no_integrantes'],
+					'fecha_nacimiento' => $registro['fecha_nacimiento']
+					);
+
+				return $datos_de_usuario[$dato];
+			}
+			else
+			{
+				return 0; //Usuario Inexistente
+			}
+		}
 	}
 ?>

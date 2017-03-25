@@ -8,10 +8,11 @@
 }
 
 body{
+    position: relative;
+    height: 100%;
+    width: 100%;
     background-image: url('../img/bc2.jpg');
     background-position: right;
-    overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 #imgSplash{
