@@ -54,17 +54,11 @@
 			return $promedio;
 		}
 
-		public function ultimo_recibo($id_usuario, $dato)
+		public function ultimo_recibo($id_usuario)
 		{
-			$recibo = $this->db->select('pago, metros_cubicos, fecha_registro', 'Registro_mensual', "id_usuario='".$id_usuario."'");
+			$recibo = $this->db->select('r.pago, r.metros_cubicos, r.fecha_registro, u.no_integrantes', 'Registro_mensual r, Usuario u', "r.id_usuario='".$id_usuario."' AND r.id_usuario=u.id_usuario AND MAX(r.fecha_registro)");
 
-			$datos_recibo = array(
-				'pago' => $recibo['pago'],
-				'metros_cubicos' => $recibo['metros_cubicos'],
-				'fecha_registro' => $recibo['fecha_registro']
-				);
-
-			return $datos_recibo[$dato];
+			return $recibo;
 		}
 
 		public function convertir_a_litros($id_registro)

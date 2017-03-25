@@ -14,11 +14,11 @@ class Usuario extends Controller{
         }
     }
 
-    public resultado_cuestionario(){
+    public function resultado_cuestionario(){
         $this->loadOtherModel("Registro");
-        $ultimo_registro = $this->Registro->;
+        $ultimo_registro = $this->Registro->ultimo_registro(Session::getValue('id_usuario'));
 //
-        $a = array('promedio_estado' =>  $this->promedio_estado();, 'pago'=>$ultimo_registro['pago'], 'metros_cubicos'=>$ultimo_registro['metros_cubicos'], 'no_integrantes'=>$ultimo_registro['no_integrantes']);
+        $a = array('promedio_estado' =>  $this->promedio_estado(), 'pago'=>$ultimo_registro['pago'], 'metros_cubicos'=>$ultimo_registro['metros_cubicos'], 'no_integrantes'=>$ultimo_registro['no_integrantes']);
         $json = json_encode($a);
         echo $json;
     }
