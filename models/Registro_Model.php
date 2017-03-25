@@ -6,12 +6,12 @@
 			parent::__construct();
 		}
 
-		public function aniadir_registro($id_usuario, $pago, $metros_cubicos, $fecha_recibo)
+		public function aniadir_registro($id_usuario, $pago, $metros_cubicos)
 		{
 			$registro = $this->db->select('id_usuario', 'Usuario', "id_usuario='".$id_usuario."'");
 			if($registro != Null)
 			{
-				$datos_recibo = array('id_registro'=>0, 'id_usuario'=>$id_usuario, 'pago'=>$pago, 'metros_cubicos'=>$metros_cubicos, 'fecha_recibo'=>$fecha_recibo);
+				$datos_recibo = array('id_registro'=>0, 'id_usuario'=>$id_usuario, 'pago'=>$pago, 'metros_cubicos'=>$metros_cubicos, 'fecha_registro'=>date('Y-m-d H:i:s'));
 
 				if($this->db->insert($datos_recibo,'Registro_mensual'))
 				{
@@ -42,21 +42,21 @@
 
 		public function promedio_metros_cubicos()
 		{
-			$mes_actual = $this->query("SELECT MONTH(CURRENT_DATE;");
-			if ($mes_actual == 1)
+			$mes_actual = $this->db->query("SELECT MONTH(CURRENT_DATE);");
+			if ($mes_actual['MONTH(CURRENT_DATE)'] == 1)
 			{
-				$promedio = $this->query("SELECT AVG(`metros_cubicos`) FROM Registro_mensual WHERE MONTH(`fecha_registro`) = 12 and YEAR(`fecha_registro`) = YEAR(CURRENT_DATE)- 1;");
+				$promedio = $this->db->query("SELECT AVG(`metros_cubicos`) FROM Registro_mensual WHERE MONTH(`fecha_registro`) = 12 and YEAR(`fecha_registro`) = YEAR(CURRENT_DATE)- 1;");
 			}
 			else
 			{
-				$promedio = $this->query("SELECT AVG(`metros_cubicos`) FROM Registro_mensual WHERE MONTH(`fecha_registro`) = MONTH(CURRENT_DATE) - 1 and YEAR(`fecha_registro`) = YEAR(CURRENT_DATE);");
+				$promedio = $this->db->query("SELECT AVG(`metros_cubicos`) as \"avgg\" FROM Registro_mensual WHERE MONTH(`fecha_registro`) = MONTH(CURRENT_DATE) - 1 and YEAR(`fecha_registro`) = YEAR(CURRENT_DATE);");
 			}
-			return $promedio;
+			return $promedio['avgg'];
 		}
 
-		public function ultimo_recibo($id_usuario)
+		public function ultimo_registro($id_usuario)
 		{
-			$recibo = $this->db->select('r.pago, r.metros_cubicos, r.fecha_registro, u.no_integrantes', 'Registro_mensual r, Usuario u', "r.id_usuario='".$id_usuario."' AND r.id_usuario=u.id_usuario AND MAX(r.fecha_registro)");
+			$recibo = $this->db->query('select r.pago, r.metros_cubicos, r.fecha_registro, u.no_integrantes from Registro_mensual r, Usuario u where r.id_usuario='.$id_usuario.' AND r.id_usuario=u.id_usuario AND r.fecha_registro = (select MAX(fecha_registro) from Registro_mensual where id_usuario='.$id_usuario.') LIMIT 1');
 
 			return $recibo;
 		}

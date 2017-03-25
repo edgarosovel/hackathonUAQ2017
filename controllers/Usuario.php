@@ -46,7 +46,7 @@ class Usuario extends Controller{
 
     public function aniadir_registro(){
         $this->loadOtherModel("Registro");
-        $response =  $this->Registro->aniadir_registro(Session::getValue('id_usuario'),$_POST['pago'],$_POST['metros_cubicos'], $_POST['fecha_recibo']);
+        $response =  $this->Registro->aniadir_registro(Session::getValue('id_usuario'),$_POST['pago'],$_POST['metros_cubicos']);
         echo $response;
     }
 
@@ -54,6 +54,13 @@ class Usuario extends Controller{
         $this->loadOtherModel("Registro");
         $response =  $this->Registro->promedio_metros_cubicos();
         return $response;
+    }
+
+    public function datos_del_dia(){
+        $this->loadOtherModel("Sensor");
+        $response =  $this->Sensor->datos_del_dia(Session::getValue('id_usuario'));
+        $json = json_encode($response);
+        echo $json;
     }
 }
 
