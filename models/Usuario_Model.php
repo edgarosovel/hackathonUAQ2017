@@ -1,5 +1,5 @@
 <?php
-	class Usuario_Model extends Model
+	class Usuario_model extends Model
 	{
 		function __construct()
 		{
@@ -34,7 +34,7 @@
 			}
 		}
 
-		public function registrar($correo, $nombre, $pass, $cp, $fecha_nacimiento, $no_integrantes){
+		public function registrar($correo, $nombre, $pass, $cp, $no_integrantes){
     		$registro = $this->db->select('correo','Usuario',"correo = ".$correo);
     		if($registro!=null)
     		{
@@ -43,7 +43,7 @@
     		else
     		{
 	    		$pass = Hash::create(ALGOR,$pass,KEY);
-	    		$datos = array('id_usuario'=>0, 'correo'=>$correo, 'nombre'=>$nombre, 'pass'=>$pass, 'cp'=>$cp, 'fecha_nacimiento'=>$fecha_nacimiento, 'no_integrantes'=>$no_integrantes);
+	    		$datos = array('id_usuario'=>0, 'correo'=>$correo, 'nombre'=>$nombre, 'pass'=>$pass, 'cp'=>$cp, 'no_integrantes'=>$no_integrantes);
 
 	    		if($this->db->insert($datos,'Usuario'))
 	    		{

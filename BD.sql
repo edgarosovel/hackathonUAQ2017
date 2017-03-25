@@ -12,7 +12,6 @@ pass varchar(130) NOT NULL,
 id_colonia int NOT NULL,
 CONSTRAINT FOREIGN KEY (id_colonia) REFERENCES Colonia(id_colonia),
 no_integrantes int DEFAULT 1,
-fecha_nacimiento date,
 UNIQUE (correo)
 );
 

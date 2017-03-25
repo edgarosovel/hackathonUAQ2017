@@ -1,5 +1,5 @@
 <?php
-	class Registro_Model() extends Model
+	class Registro_model extends Model
 	{
 		function __construct()
 		{
@@ -25,6 +25,18 @@
 			else
 			{
 				return 0; //El Usuario no Existe
+			}
+		}
+
+		public function hay_registro($id_usuario){
+				$registro = $this->db->select('count(*)', 'Registro_mensual', "id_usuario='".$id_usuario."'");
+				if($registro != Null)
+			{
+				return 1; //Hay registro
+			}
+			else
+			{
+				return 0; //Sin inexistente
 			}
 		}
 
@@ -60,6 +72,7 @@
 			{
 				$promedio = $this->query("SELECT AVG(`metros_cubicos`) FROM Registro_mensual WHERE MONTH(`fecha_registro`) = MONTH(CURRENT_DATE) - 1 and YEAR(`fecha_registro`) = YEAR(CURRENT_DATE);");
 			}
+			return $promedio;
 		}
 	}
 ?>
