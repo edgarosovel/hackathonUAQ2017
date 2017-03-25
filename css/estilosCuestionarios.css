@@ -70,7 +70,8 @@ body{
 .boton{
     width: 75%;
     height: 55px;
-    margin-top: 10px;
+    top: 30px;
+    margin-top: 20px;
     margin-left: 12.5%;
     border: 1px solid #f7f8f9;
     background-color: transparent;
