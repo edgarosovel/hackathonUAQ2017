@@ -6,20 +6,21 @@
 				parent::__construct();
 		}
 
-		private function crear_sesion($nombre)
+		private function crear_sesion($id_usuario, $nombre)
 		{
+			Session::setValue('id_usuario', $id_usuario);
         	Session::setValue('nombre', $nombre);
     	}
 
-		public function iniciar_sesion($correo, $password)
+		public function iniciar_sesion($correo, $pass)
 		{
 
 			$registro = $this->db->select('*', 'Usuario', "correo='".$correo."'");
 			if(is_array($registro))
 			{
-				if($registro['password'] == Hash::create(ALGOR,$password,KEY))
+				if($registro['pass'] == Hash::create(ALGOR,$pass,KEY))
 				{
-						$this->crear_sesion($correo);
+						$this->crear_sesion($registro['id_usuario'], $registro['nombre']);
 						return 1; //Inicio de Sesion Exitoso
 				}
 				else
@@ -33,7 +34,7 @@
 			}
 		}
 
-		public function registrar($correo, $nombre, $password, $cp, $fecha_nacimiento, $no_integrantes){
+		public function registrar($correo, $nombre, $pass, $cp, $fecha_nacimiento, $no_integrantes){
     		$registro = $this->db->select('correo','Usuario',"correo = ".$correo);
     		if($registro!=null)
     		{
@@ -41,8 +42,8 @@
     		}
     		else
     		{
-	    		$pass = Hash::create(ALGOR,$password,KEY);
-	    		$datos = array('correo'=>$correo, 'nombre'=>$nombre, 'password'=>$pass, 'cp'=>$cp, 'fecha_nacimiento'=>$fecha_nacimiento, 'no_integrantes'=>$no_integrantes);
+	    		$pass = Hash::create(ALGOR,$pass,KEY);
+	    		$datos = array('correo'=>$correo, 'nombre'=>$nombre, 'pass'=>$pass, 'cp'=>$cp, 'fecha_nacimiento'=>$fecha_nacimiento, 'no_integrantes'=>$no_integrantes);
 
 	    		if($this->db->insert($datos,'Usuario'))
 	    		{
