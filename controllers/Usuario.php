@@ -7,7 +7,11 @@ class Usuario extends Controller{
     }
 
     public function index(){
-        header('location:'.URL.Session::getValue('tipoUsuario'));
+        if(Session::exist()){
+            echo 1;
+        }else{
+            echo 2;
+        }
     }
 
     public function iniciarSesion(){
@@ -23,6 +27,18 @@ class Usuario extends Controller{
 
     public function registrar(){
         $response =  $this->model->registrar($_POST['correo'],$_POST['nombre'],$_POST['pass'], $_POST['cp'], $_POST['fecha_nacimiento'], $_POST['no_integrantes']);
+        echo $response;
+    }
+
+    public function aniadir_registro(){
+        $this->loadOtherModel("Registro");
+        $response =  $this->Registro->aniadir_recibo(Session::getValue('id_usuario'),$_POST['pago'],$_POST['metros_cubicos'], $_POST['fecha_recibo']);
+        echo $response;
+    }
+
+    public function promedio_estado(){
+        $this->loadOtherModel("Registro");
+        $response =  $this->Registro->promedio_estado();
         echo $response;
     }
 }

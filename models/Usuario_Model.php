@@ -1,5 +1,5 @@
 <?php
-	class Usuario_Model() extends Model
+	class Usuario_Model extends Model
 	{
 		function __construct()
 		{
@@ -14,14 +14,13 @@
     	}
 
 		public function iniciar_sesion($correo, $pass)
-		{
-
+		{	
 			$registro = $this->db->select('*', 'Usuario', "correo='".$correo."'");
 			if(is_array($registro))
 			{
 				if($registro['pass'] == Hash::create(ALGOR,$pass,KEY))
 				{
-						$this->crear_sesion($registro['id_usuario'], $registro['correo'] $registro['nombre']);
+						$this->crear_sesion($registro['id_usuario'], $registro['correo'], $registro['nombre']);
 						return 1; //Inicio de Sesion Exitoso
 				}
 				else

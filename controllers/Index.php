@@ -7,7 +7,7 @@ class Index extends Controller{
     
     public function index(){
         if(Session::exist()){
-            header("location:".URL."Usuario/");
+            //header("location:".URL."Usuario/");
         }else{
             echo "Hola mundo";
            //$this->view->render($this,'index'); 

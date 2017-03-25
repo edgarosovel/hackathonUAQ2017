@@ -1,5 +1,5 @@
 <?php
-	class Datos_Sensor_Model() extends Model
+	class Datos_Sensor_Model extends Model
 	{
 		function __construct()
 		{
