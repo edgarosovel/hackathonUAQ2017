@@ -10,7 +10,7 @@
 		{
 
 			$datos_sensor = array('id_datos'=>0, 'fecha'=>date('Y-m-d H:i:s'), 'id_usuario'=>$id_usuario, 'litros'=>$litros);
-			if($this->db->insert($datos_sensor,'Datos_sensor'));
+			if($this->db->insert($datos_sensor,'Datos_sensor'))
 			{
 				return 1; //Datos Almacenados
 			}
@@ -21,7 +21,7 @@
 		}
 
 		public function datos_del_dia($id_usuario){
-			$datos = $this->db->select('*','Datos_sensor','id_usuario='.$id_usuario.'and fecha>'.date("Y-m-d"));
+			$datos = $this->db->select('*','Datos_sensor','id_usuario='.$id_usuario.' and fecha>'.date("Y-m-d"));
 			return $datos;
 		}
 	}

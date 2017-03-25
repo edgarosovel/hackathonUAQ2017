@@ -45,11 +45,11 @@
 			$mes_actual = $this->db->query("SELECT MONTH(CURRENT_DATE);");
 			if ($mes_actual['MONTH(CURRENT_DATE)'] == 1)
 			{
-				$promedio = $this->db->query("SELECT AVG(`metros_cubicos`) FROM Registro_mensual WHERE MONTH(`fecha_registro`) = 12 and YEAR(`fecha_registro`) = YEAR(CURRENT_DATE)- 1;");
+				$promedio = $this->db->query("SELECT AVG(r.metros_cubicos/u.no_integrantes) as \"avgg\" FROM Registro_mensual r, Usuario u WHERE MONTH(r.fecha_registro) = 12 and YEAR(r.fecha_registro) = YEAR(CURRENT_DATE) - 1 and r.id_usuario=u.id_usuario;");
 			}
 			else
 			{
-				$promedio = $this->db->query("SELECT AVG(`metros_cubicos`) as \"avgg\" FROM Registro_mensual WHERE MONTH(`fecha_registro`) = MONTH(CURRENT_DATE) - 1 and YEAR(`fecha_registro`) = YEAR(CURRENT_DATE);");
+				$promedio = $this->db->query("SELECT AVG(r.metros_cubicos/u.no_integrantes) as \"avgg\" FROM Registro_mensual r, Usuario u WHERE MONTH(r.fecha_registro) = MONTH(CURRENT_DATE) - 1 and YEAR(r.fecha_registro) = YEAR(CURRENT_DATE) and r.id_usuario=u.id_usuario;");
 			}
 			return $promedio['avgg'];
 		}
