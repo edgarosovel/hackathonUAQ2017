@@ -28,6 +28,18 @@
 			}
 		}
 
+		public function hay_registro($id_usuario){
+				$registro = $this->db->select('count(*)', 'Registro_mensual', "id_usuario='".$id_usuario."'");
+				if($registro != Null)
+			{
+				return 1; //Hay registro
+			}
+			else
+			{
+				return 0; //Sin inexistente
+			}
+		}
+
 		public function get_dato($id_usuario, $dato)
 		{
 			$registro = $this->db->select('*', 'Usuario', "id_usuario='".$id_usuario."'");

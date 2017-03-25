@@ -30,6 +30,12 @@ class Usuario extends Controller{
         echo $response;
     }
 
+    public function hay_registro(){
+        $this->loadOtherModel("Registro");
+        $response =  $this->Registro->hay_registro(Session::getValue('id_usuario'));
+        echo $response;
+    }
+
     public function aniadir_registro(){
         $this->loadOtherModel("Registro");
         $response =  $this->Registro->aniadir_recibo(Session::getValue('id_usuario'),$_POST['pago'],$_POST['metros_cubicos'], $_POST['fecha_recibo']);
