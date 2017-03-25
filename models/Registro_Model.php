@@ -6,7 +6,7 @@
 			parent::__construct();
 		}
 
-		public function aniadir_recibo($id_usuario, $pago, $metros_cubicos, $fecha_recibo)
+		public function aniadir_registro($id_usuario, $pago, $metros_cubicos, $fecha_recibo)
 		{
 			$registro = $this->db->select('id_usuario', 'Usuario', "id_usuario='".$id_usuario."'");
 			if($registro != Null)

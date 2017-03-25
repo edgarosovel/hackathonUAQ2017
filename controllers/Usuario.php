@@ -14,6 +14,15 @@ class Usuario extends Controller{
         }
     }
 
+    public resultado_cuestionario(){
+        $this->loadOtherModel("Registro");
+        $ultimo_registro = $this->Registro->;
+//
+        $a = array('promedio_estado' =>  $this->promedio_estado();, 'pago'=>$ultimo_registro['pago'], 'metros_cubicos'=>$ultimo_registro['metros_cubicos'], 'no_integrantes'=>$ultimo_registro['no_integrantes']);
+        $json = json_encode($a);
+        echo $json;
+    }
+
     public function iniciarSesion(){
         $respuesta = $this->model->iniciar_sesion($_POST["correo"], $_POST["pass"]);
         echo $respuesta;
@@ -22,7 +31,6 @@ class Usuario extends Controller{
     public function cerrarSesion(){
         Session::destroy();
         echo "1";
-        //header("location:".URL);
     }
 
     public function registrar(){
@@ -38,14 +46,14 @@ class Usuario extends Controller{
 
     public function aniadir_registro(){
         $this->loadOtherModel("Registro");
-        $response =  $this->Registro->aniadir_recibo(Session::getValue('id_usuario'),$_POST['pago'],$_POST['metros_cubicos'], $_POST['fecha_recibo']);
+        $response =  $this->Registro->aniadir_registro(Session::getValue('id_usuario'),$_POST['pago'],$_POST['metros_cubicos'], $_POST['fecha_recibo']);
         echo $response;
     }
 
     public function promedio_estado(){
         $this->loadOtherModel("Registro");
         $response =  $this->Registro->promedio_metros_cubicos();
-        echo $response;
+        return $response;
     }
 }
 
