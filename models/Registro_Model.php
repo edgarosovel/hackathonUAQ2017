@@ -1,5 +1,5 @@
 <?php
-	class Registro_Model() extends Model
+	class Registro_model extends Model
 	{
 		function __construct()
 		{
@@ -60,6 +60,7 @@
 			{
 				$promedio = $this->query("SELECT AVG(`metros_cubicos`) FROM Registro_mensual WHERE MONTH(`fecha_recibo`) = MONTH(DATE()) - 1 and YEAR(`fecha_recibo`) = YEAR(DATE());");
 			}
+			return $promedio;
 		}
 	}
 ?>

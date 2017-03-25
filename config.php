@@ -3,8 +3,8 @@
 	error_reporting(E_ALL|E_STRICT);
 	ini_set('display_errors', 'on');
 
-	define( 'URL' ,"http://177.231.44.78/hackathonUAQ2017/");
-	//define( 'URL' ,"http://localhost/hackathonUAQ2017/");
+	//define( 'URL' ,"http://177.231.44.78/hackathonUAQ2017/");
+	define( 'URL' ,"http://localhost/hackathonUAQ2017/");
 
 	define( 'CSS' , URL."public/css/");
 	define( 'JS' , URL."public/js/" );

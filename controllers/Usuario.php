@@ -1,5 +1,5 @@
 <?php 
- 
+header('Access-Control-Allow-Origin: *');
 class Usuario extends Controller{
 
     function __construct() {
@@ -15,7 +15,7 @@ class Usuario extends Controller{
     }
 
     public function iniciarSesion(){
-        $respuesta = $this->model->iniciarSesion($_POST["correo"], $_POST["pass"]);
+        $respuesta = $this->model->iniciar_sesion($_POST["correo"], $_POST["pass"]);
         echo $respuesta;
     }
 
@@ -26,7 +26,7 @@ class Usuario extends Controller{
     }
 
     public function registrar(){
-        $response =  $this->model->registrar($_POST['correo'],$_POST['nombre'],$_POST['pass'], $_POST['cp'], $_POST['fecha_nacimiento'], $_POST['no_integrantes']);
+        $response =  $this->model->registrar($_POST['correo'],$_POST['nombre'],$_POST['pass'], $_POST['cp'], $_POST['no_integrantes']);
         echo $response;
     }
 
@@ -38,7 +38,7 @@ class Usuario extends Controller{
 
     public function promedio_estado(){
         $this->loadOtherModel("Registro");
-        $response =  $this->Registro->promedio_estado();
+        $response =  $this->Registro->promedio_metros_cubicos();
         echo $response;
     }
 }

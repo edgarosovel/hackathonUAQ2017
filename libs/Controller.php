@@ -44,7 +44,7 @@ class Controller {
     }
 
     protected function pageNotFound(){
-        $this->view->render('Default', 'pageNotFound', true); 
+        //$this->view->render('Default', 'pageNotFound', true); 
     }
 
 }
