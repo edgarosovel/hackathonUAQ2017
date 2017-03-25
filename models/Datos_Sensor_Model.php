@@ -27,5 +27,12 @@
 				return 0; //El Usuario no Existe
 			}
 		}
+
+		public function convertir_a_metros_cubicos($id_datos)
+		{
+			$litros = $this->db->select('litros', 'Datos_sensor', "id_datos='".$id_datos."'");
+			return $litros * 1000;
+		}
+
 	}
 ?>
