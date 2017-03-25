@@ -8,8 +8,6 @@
 	define( 'CSS' , URL."public/css/");
 	define( 'JS' , URL."public/js/" );
 	define('IMG', URL."public/images/");
-	define('PERFIL', IMG.'perfil/');
-	define('LP','public/images/perfil/');
 
 	//Constantes de la base de datos
 	define( 'DB_HOST' ,'177.231.44.78');

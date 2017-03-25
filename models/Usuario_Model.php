@@ -44,7 +44,7 @@
     		else
     		{
 	    		$pass = Hash::create(ALGOR,$pass,KEY);
-	    		$datos = array('correo'=>$correo, 'nombre'=>$nombre, 'pass'=>$pass, 'cp'=>$cp, 'fecha_nacimiento'=>$fecha_nacimiento, 'no_integrantes'=>$no_integrantes);
+	    		$datos = array('id_usuario'=>0, 'correo'=>$correo, 'nombre'=>$nombre, 'pass'=>$pass, 'cp'=>$cp, 'fecha_nacimiento'=>$fecha_nacimiento, 'no_integrantes'=>$no_integrantes);
 
 	    		if($this->db->insert($datos,'Usuario'))
 	    		{
