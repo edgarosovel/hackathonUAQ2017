@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" href="estilosLogin.css">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/estilosLogin.css">
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob: gap: http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'; connect-src 'self' http://* 'unsafe-inline'; style-src 'self' http://* 'unsafe-inline' 'unsafe-eval'; media-src *;">
     <title>Aguacon</title>
 </head>
 <body>
@@ -17,17 +18,18 @@
     <div id="divFormulario">
         <div class="inner-addon left-addon">
             <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            <input class="input" type="text" placeholder="Correo Eléctronico">
+            <input class="input" type="text" placeholder="Correo Eléctronico" id="usr">
         </div>
         <div class="inner-addon left-addon">
             <i class="fa fa-key" aria-hidden="true"></i>
-            <input class="input" type="password" placeholder="Contraseña">
+            <input class="input" type="password" placeholder="Contraseña" id="pass">
         </div>
     </div>
     <div id="footer">
-        <button class="botones">Inicia Sesión</button>
-        <a href="">Ó regístrate aquí</a>
+        <button class="botones" onclick="loguear()">Inicia Sesión</button>
+        <a href="registro.html">Ó regístrate aquí</a>
         <h4>Hackatour Querétaro 2017</h4>
     </div>
 </body>
+<script type="text/javascript" src="js/login.js"></script>
 </html>
