@@ -1,5 +1,5 @@
 <?php
-	class Recibo_Model() extends Model
+	class Registro_Model() extends Model
 	{
 		function __construct()
 		{
@@ -13,7 +13,7 @@
 			{
 				$datos_recibo = array('id_usuario'=>$id_usuario, 'pago'=>$pago, 'metros_cubicos'=>$metros_cubicos, 'fecha_recibo'=>$fecha_recibo);
 
-				if($this->db->insert($datos_recibo,'Recibo'))
+				if($this->db->insert($datos_recibo,'Registro_mensual'))
 				{
 					return 1 //Recibo Registrado
 				}

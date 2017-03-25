@@ -6,8 +6,9 @@
 				parent::__construct();
 		}
 
-		private function crear_sesion($id_usuario, $nombre)
+		private function crear_sesion($id_usuario, $correo, $nombre)
 		{
+			Session::setValue('correo', $correo);
 			Session::setValue('id_usuario', $id_usuario);
         	Session::setValue('nombre', $nombre);
     	}
@@ -20,7 +21,7 @@
 			{
 				if($registro['pass'] == Hash::create(ALGOR,$pass,KEY))
 				{
-						$this->crear_sesion($registro['id_usuario'], $registro['nombre']);
+						$this->crear_sesion($registro['id_usuario'], $registro['correo'] $registro['nombre']);
 						return 1; //Inicio de Sesion Exitoso
 				}
 				else
