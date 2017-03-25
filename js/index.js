@@ -1,5 +1,5 @@
 function load(){
-		var url = "http://177.231.44.78/Usuario/";
+		var url = "http://177.231.44.78/hackathonUAQ2017/Usuario/";
 	   
 		logIn = new XMLHttpRequest();
 		logIn.open("POST", url ,true);
@@ -8,12 +8,17 @@ function load(){
 
 		logIn.onreadystatechange = function (){
 			if (logIn.readyState == 4) {
-				if (Number(logIn.responceText) == 1){
-					alert("Existe una sesión");
+				if (Number(logIn.responseText) == 1){
+					cargar("primerUso.html")
+				}else{
+					cargar("login.html")
 				}
 			}
 		}
-		setTimeout(function(){
-			location.assign("login.html")
-		},3500)
+}
+
+function cargar(url){
+	setTimeout(function(){
+		location.assign(url)
+	},3500)
 }

@@ -1,9 +1,9 @@
-function loguear(){
+function loguear(){ 
 	var username = document.getElementById('usr');
 	var password = document.getElementById('pass');
 
 		if (username.value != '' && password.value != '') {
-			var url = "http://177.231.44.78/Usuario/iniciarSesion/";
+			var url = "http://177.231.44.78/hackathonUAQ2017/Usuario/iniciarSesion";
 		   	var datos = "correo=" + username.value + "&pass=" + password.value;
 		   
 			logIn = new XMLHttpRequest();
