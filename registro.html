@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" href="estilosRegistro.css">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/estilosRegistro.css">
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob: gap: http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'; connect-src 'self' http://* 'unsafe-inline'; style-src 'self' http://* 'unsafe-inline' 'unsafe-eval'; media-src *;">
     <title>Registro</title>
 </head>
 <body>
@@ -14,42 +15,43 @@
      <div class="formularioRegistro">
          <div class="inner-addon left-addon">
             <i class="fa fa-user-o" aria-hidden="true"></i>
-            <input class="input" type="text" placeholder="Nombre">
+            <input class="input" type="text" placeholder="Nombre" id="nom">
         </div>
      </div>
 
      <div class="formularioRegistro">
          <div class="inner-addon left-addon">
             <i class="fa fa-key" aria-hidden="true"></i>
-            <input class="input" type="password" placeholder="Contraseña">
+            <input class="input" type="password" placeholder="Contraseña" id="pass">
         </div>
      </div>
 
      <div class="formularioRegistro">
          <div class="inner-addon left-addon">
             <i class="fa fa-key" aria-hidden="true"></i>
-            <input class="input" type="password" placeholder="Confirmar contraseña">
+            <input class="input" type="password" placeholder="Confirmar contraseña" id="conpass">
         </div>
      </div>
 
      <div class="formularioRegistro">
          <div class="inner-addon left-addon">
             <i class="fa fa-address-card-o" aria-hidden="true"></i>
-            <input class="input" type="text" placeholder="Código Postal">
+            <input class="input" type="text" placeholder="Código Postal" id="cp">
         </div>
      </div>
 
      <div class="formularioRegistro">
          <div class="inner-addon left-addon">
             <i class="fa fa-users" aria-hidden="true"></i>
-            <input class="input" type="text" pattern='[0-9]{1,3}' placeholder="¿Cuántas personas viven contigo?">
+            <input class="input" type="text" pattern='[0-9]{1,3}' placeholder="¿Cuántas personas viven contigo?" id="fam">
         </div>
      </div>
  </div>
  <div id="footer">
         <button class="botones">Regístrarse</button>
-        <a href="">Ó inicia sesión aquí</a>
+        <a href="login.html">Ó inicia sesión aquí</a>
         <h4>Hackatour Querétaro 2017</h4>
     </div>
 </body>
+<script type="text/javascript" src="js/registro.js"></script>
 </html>

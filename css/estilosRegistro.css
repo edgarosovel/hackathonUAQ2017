@@ -8,10 +8,8 @@
 }
 
 body{
-    background-image: url('img/bc2.jpg');
+    background-image: url('../img/bc2.jpg');
     background-position: right;
-    overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 #registro{
@@ -65,15 +63,15 @@ body{
 #footer{
     float: left;
     box-sizing: border-box;
-    position: absolute;
+    position: relative;
     height: 10%;
     width: 100%;
-    top: 75%;
+    top: 450px;
 }
 
 .botones{
     width: 75%;
-    height: 70%;
+    height: 70px;
     margin-top: 20px;
     margin-left: 12.5%;
     border: 1px solid #f7f8f9;

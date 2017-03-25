@@ -51,14 +51,14 @@
 
 		public function promedio_metros_cubicos()
 		{
-			$mes_actual = $this->query("SELECT MONTH(DATE());");
+			$mes_actual = $this->query("SELECT MONTH(CURRENT_DATE;");
 			if ($mes_actual == 1)
 			{
-				$promedio = $this->query("SELECT AVG(`metros_cubicos`) FROM Registro_mensual WHERE MONTH(`fecha_recibo`) = 12 and YEAR(`fecha_recibo`) = YEAR(DATE() - 1);");
+				$promedio = $this->query("SELECT AVG(`metros_cubicos`) FROM Registro_mensual WHERE MONTH(`fecha_registro`) = 12 and YEAR(`fecha_registro`) = YEAR(CURRENT_DATE)- 1;");
 			}
 			else
 			{
-				$promedio = $this->query("SELECT AVG(`metros_cubicos`) FROM Registro_mensual WHERE MONTH(`fecha_recibo`) = MONTH(DATE()) - 1 and YEAR(`fecha_recibo`) = YEAR(DATE());");
+				$promedio = $this->query("SELECT AVG(`metros_cubicos`) FROM Registro_mensual WHERE MONTH(`fecha_registro`) = MONTH(CURRENT_DATE) - 1 and YEAR(`fecha_registro`) = YEAR(CURRENT_DATE);");
 			}
 			return $promedio;
 		}
