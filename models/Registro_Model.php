@@ -60,11 +60,5 @@
 
 			return $recibo;
 		}
-
-		public function convertir_a_litros($id_registro)
-		{
-			$metros_cubicos = $this->db->select('metros_cubicos', 'Registro_mensual', "id_registro='".$id_registro."'");
-			return $metros_cubicos / 1000;
-		}
 	}
 ?>
