@@ -8,7 +8,10 @@
 }
 
 body{
-    background-image: url('img/bc2.jpg');
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/bc2.jpg');
     background-position: right; 
 }
 
